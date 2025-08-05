@@ -14,20 +14,42 @@ const alphaTech = [
     { name: 'Grace', age: 20, department: 'Engineering' }
   ];
   
+    // const allEmployees = alphaTech.map((employee) => {return {name: employee.name, age: employee.age, department: employee.department, company: "alphaTech"}})
 
-const allEmployees = alphaTech.concat(betaSoft, gammaDev);
+  const allEmployees = alphaTech.map((employee) => {
+    return {
+      name: employee.name, 
+      age: employee.age, 
+      department: employee.department, 
+      company: "alphaTech"
+    }})
+  .concat(betaSoft.map((employee) => {
+    return {
+      name: employee.name, 
+      age: employee.age, 
+      department: employee.department, 
+      company: "betaSoft"
+    }})
+  ,gammaDev.map((employee) => {
+    return {
+      name: employee.name, 
+      age: employee.age, 
+      department: employee.department, 
+      company: "gammaDev"
+    }})
+  );
 
-const result = allEmployees.filter((employee) => {
-  return employee.department === 'Enginering' && employee.age > 20;
+  const result = allEmployees.filter((employee) => {
+  return employee.department === 'Engineering' && employee.age >= 20;
 }).map((employee) => {
   return {
     name: employee.name,
-    company: '' 
+    company: employee.company
   };
 });
 
 console.log(result);
-// [
+// // [
 //     { name: 'Alice', company: 'alphaTech' },
 //     { name: 'Charlie', company: 'betaSoft' },
 //     { name: 'Grace', company: 'gammaDev' }
